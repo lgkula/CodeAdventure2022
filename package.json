@@ -1,0 +1,12 @@
+{
+  "name": "advent-calendar",
+  "version": "1.0.0",
+  "description": "Advent of Code 2022",
+  "main": "script.js", 
+	"type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
