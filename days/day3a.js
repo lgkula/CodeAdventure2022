@@ -1,6 +1,6 @@
 import { removeFromArray, getFirstHalfOfArray, getSecondHalfOfArray, getDuplicates } from '../tools/arrayTools.js';
 import { getArrayFromFileLines } from '../tools/fileTools.js';
-import { EMPTY_STRING, SMALL_A_ASCII_CODE, LARGE_A_ASCII_CODE } from '../tools/consts.js';
+import { EMPTY_STRING, SMALL_A_ASCII_CODE, LARGE_A_ASCII_CODE, ZERO } from '../tools/consts.js';
 import fs from "fs";
 
 const PATH_TO_INPUT_FILE = "../inputs/day3input.txt";
@@ -10,7 +10,7 @@ const LARGE_ASCII_LETERS_SUBTRACTION = LARGE_A_ASCII_CODE - 1;
 const ADDITIONAL_POINTS_FOR_LETTER_SIZE = 26;
 
 export const getPointsForPrio = (prio) => {
-	const prioAsciiCode = prio.charCodeAt(0);
+	const prioAsciiCode = prio.charCodeAt(ZERO);
 
 	if (prioAsciiCode > SMALL_ASCII_LETERS_SUBTRACTION) {
 		return prioAsciiCode - SMALL_ASCII_LETERS_SUBTRACTION;
@@ -24,7 +24,7 @@ const getRucksackPrio = (data) => {
 	const secondCompartment = getSecondHalfOfArray(data);
 	const filteredArray = getDuplicates(firstCompartment, secondCompartment);
 
-	return filteredArray[0];
+	return filteredArray[ZERO];
 }
 
 const gatRucksackPoints = (rucksackItems) => {
@@ -35,7 +35,7 @@ const gatRucksackPoints = (rucksackItems) => {
 
 const calculatePoints = (rucksackArray) => {
 	let cleanRucksackArray = removeFromArray(EMPTY_STRING, rucksackArray);
-	let result = 0;
+	let result = ZERO;
 
 	cleanRucksackArray.forEach((data) => {
 		result += gatRucksackPoints(data);

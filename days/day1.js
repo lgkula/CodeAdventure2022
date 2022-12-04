@@ -1,13 +1,13 @@
 import { getSumOfMaxValues } from '../tools/arrayTools.js';
 import { getArrayFromFileLines } from '../tools/fileTools.js';
-import { EMPTY_STRING } from '../tools/consts.js';
+import { EMPTY_STRING, ZERO } from '../tools/consts.js';
 import fs from "fs";
 
 const PATH_TO_INPUT_FILE = "../inputs/day1input.txt";
 const BEST_ELVES_AMOUNT = 1;
 
 const calculateEachElfCalories = (caloriesArray) => {
-	const resultArray = [0];
+	const resultArray = [ZERO];
 
 	caloriesArray.forEach((data) => {
 		const currentElf = resultArray.length - 1;
@@ -16,7 +16,7 @@ const calculateEachElfCalories = (caloriesArray) => {
 		if (data !== EMPTY_STRING) {
 			resultArray[currentElf] = currentAmount + Number(data);
 		} else {
-			resultArray.push(0);
+			resultArray.push(ZERO);
 		}
 	});
 

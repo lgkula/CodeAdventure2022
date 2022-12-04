@@ -1,6 +1,6 @@
 import { removeFromArray, getDuplicates } from '../tools/arrayTools.js';
 import { getArrayFromFileLines } from '../tools/fileTools.js';
-import { EMPTY_STRING, SMALL_A_ASCII_CODE, LARGE_A_ASCII_CODE } from '../tools/consts.js';
+import { EMPTY_STRING, SMALL_A_ASCII_CODE, LARGE_A_ASCII_CODE, ZERO } from '../tools/consts.js';
 import fs from "fs";
 
 const PATH_TO_INPUT_FILE = "../inputs/day3input.txt";
@@ -11,7 +11,7 @@ const LARGE_ASCII_LETERS_SUBTRACTION = LARGE_A_ASCII_CODE - 1;
 const ADDITIONAL_POINTS_FOR_LETTER_SIZE = 26;
 
 export const getPointsForPrio = (prio) => {
-	const prioAsciiCode = prio.charCodeAt(0);
+	const prioAsciiCode = prio.charCodeAt(ZERO);
 
 	if (prioAsciiCode > SMALL_ASCII_LETERS_SUBTRACTION) {
 		return prioAsciiCode - SMALL_ASCII_LETERS_SUBTRACTION;
@@ -23,7 +23,7 @@ export const getPointsForPrio = (prio) => {
 const getGroupBagdePrio = (elf1, elf2, elf3) => {
 	const filteredArray = getDuplicates(getDuplicates(elf1, elf2), elf3);
 
-	return filteredArray[0];
+	return filteredArray[ZERO];
 }
 
 const gatPointsForAddingBadges = (elf1, elf2, elf3) => {
@@ -34,7 +34,7 @@ const gatPointsForAddingBadges = (elf1, elf2, elf3) => {
 
 const calculatePoints = (rucksackArray) => {
 	let cleanRucksackArray = removeFromArray(EMPTY_STRING, rucksackArray);
-	let result = 0;
+	let result = ZERO;
 
 	for (let i = 0; i < cleanRucksackArray.length - 1; i = i + ELFS_IN_GROUP) {
 		result += gatPointsForAddingBadges(cleanRucksackArray[i], cleanRucksackArray[i + 1], cleanRucksackArray[i + 2]);

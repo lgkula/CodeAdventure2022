@@ -1,6 +1,6 @@
 import { removeFromArray } from '../tools/arrayTools.js';
 import { getArrayFromFileLines } from '../tools/fileTools.js';
-import { EMPTY_STRING } from '../tools/consts.js';
+import { EMPTY_STRING, ZERO } from '../tools/consts.js';
 import fs from "fs";
 
 const PATH_TO_INPUT_FILE = "../inputs/day2input.txt";
@@ -62,7 +62,7 @@ const getPointsInRound = (round) => {
 
 const calculatePoints = (roundArray) => {
 	let cleanRoundArray = removeFromArray(EMPTY_STRING, roundArray);
-	let result = 0;
+	let result = ZERO;
 
 	cleanRoundArray.forEach((round) => {
 		result += getPointsInRound(round);

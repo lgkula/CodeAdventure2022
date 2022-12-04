@@ -45,3 +45,14 @@ export const getSecondHalfOfArray = (array) => {
 export const getDuplicates = (array1, array2) => {
 	return array1.filter(value => array2.includes(value));
 }
+
+//-------------------------------------------------
+//Check values
+//---------------------
+export const checkIfAContainsB = (firstArray, secondArray) => firstArray.every(element => secondArray.includes(element));
+
+export const checkIfAnyOfTheArraysFullyContainsTheOther = (firstArray, secondArray) => checkIfAContainsB(firstArray, secondArray) || checkIfAContainsB(secondArray, firstArray);
+
+export const checkIfAHasSomeCommonPartsWithB = (firstArray, secondArray) => firstArray.every(element => secondArray.includes(element));
+
+export const checkIfAnyOfTheArraysPartlyContainsTheOther = (firstArray, secondArray) => checkIfAHasSomeCommonPartsWithB(firstArray, secondArray) || checkIfAHasSomeCommonPartsWithB(secondArray, firstArray);
